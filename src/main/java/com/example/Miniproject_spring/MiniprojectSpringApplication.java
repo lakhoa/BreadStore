@@ -1,13 +1,13 @@
-package com.example.BreadStore;
+package com.example.Miniproject_spring;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class BreadStoreApplication {
+public class MiniprojectSpringApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(BreadStoreApplication.class, args);
+		SpringApplication.run(MiniprojectSpringApplication.class, args);
 	}
 
 }
