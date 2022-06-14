@@ -1,5 +1,6 @@
 package com.example.Miniproject_spring.entity;
 
+
 import javax.persistence.*;
 import java.util.Date;
 

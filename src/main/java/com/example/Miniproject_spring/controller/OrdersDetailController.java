@@ -1,5 +1,6 @@
 package com.example.Miniproject_spring.controller;
 
+
 import com.example.Miniproject_spring.entity.Orders_detail;
 import com.example.Miniproject_spring.service.OrdersDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,5 +25,4 @@ public class OrdersDetailController {
     public Orders_detail createOrders(@RequestBody Orders_detail orders_detail)
     {
         return ordersDetailService.createOrder(orders_detail);
-    }
 }
