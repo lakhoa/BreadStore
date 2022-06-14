@@ -1,4 +1,8 @@
 package com.example.Miniproject_spring.service;
 
-public class OrdersDetailService {
+import com.example.Miniproject_spring.entity.Orders_detail;
+
+
+public interface OrdersDetailService {
+    Orders_detail createOrder(Orders_detail orders_detail);
 }
