@@ -19,7 +19,8 @@ public class Product {
     @Column(name = "price")
     private  double price;
 
-
+    public Product() {
+    }
 
 
     public Long getId() {
@@ -43,6 +44,12 @@ public class Product {
     }
 
     public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public Product(Long id, String name, double price) {
+        this.id = id;
+        this.name = name;
         this.price = price;
     }
 }

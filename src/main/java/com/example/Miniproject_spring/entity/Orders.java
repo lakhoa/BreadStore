@@ -43,6 +43,7 @@ public class Orders {
     }
 
 
+
     public Long getId() {
         return id;
     }
@@ -64,6 +65,12 @@ public class Orders {
     }
 
     public void setTotal_price(double total_price) {
+        this.total_price = total_price;
+    }
+
+    public Orders(Long id, LocalDateTime createdDate, double total_price) {
+        this.id = id;
+        this.createdDate = createdDate;
         this.total_price = total_price;
     }
 }

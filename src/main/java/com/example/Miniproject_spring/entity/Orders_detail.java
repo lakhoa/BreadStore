@@ -65,5 +65,10 @@ public class Orders_detail {
         this.quantity = quantity;
     }
 
-
+    public Orders_detail(Long id, int quantity, Orders orders, Product product) {
+        this.id = id;
+        this.quantity = quantity;
+        this.orders = orders;
+        this.product = product;
+    }
 }

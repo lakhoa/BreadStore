@@ -25,4 +25,5 @@ public class OrdersDetailController {
     public Orders_detail createOrders(@RequestBody Orders_detail orders_detail)
     {
         return ordersDetailService.createOrder(orders_detail);
+    }
 }
