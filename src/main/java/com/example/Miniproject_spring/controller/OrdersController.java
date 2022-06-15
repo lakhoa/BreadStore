@@ -9,8 +9,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 
+@RestController
 public class OrdersController {
-   /*
+
     private OrdersService ordersService;
 
     public OrdersController(OrdersService ordersService) {
@@ -22,6 +23,4 @@ public class OrdersController {
     {
         return ordersService.createOrder(orders);
     }
-
-    */
 }

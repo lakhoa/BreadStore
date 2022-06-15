@@ -1,5 +1,4 @@
 package com.example.Miniproject_spring.controller;
-
 import com.example.Miniproject_spring.entity.Product;
 import com.example.Miniproject_spring.repository.ProductRepository;
 import com.example.Miniproject_spring.service.ProductService;

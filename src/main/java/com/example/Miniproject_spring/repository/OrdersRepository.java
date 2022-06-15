@@ -1,6 +1,4 @@
 package com.example.Miniproject_spring.repository;
-
-
 import com.example.Miniproject_spring.entity.Orders;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
