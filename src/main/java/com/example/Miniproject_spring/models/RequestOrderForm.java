@@ -4,20 +4,20 @@ import java.util.List;
 
 public class RequestOrderForm {
 
-    List<OrderItem> orderItemAll;
+    List<OrderItem> orderItems;
     String note;
 
     public RequestOrderForm(List<OrderItem> orderItemAll, String note) {
-        this.orderItemAll = orderItemAll;
+        this.orderItems = orderItemAll;
         this.note = note;
     }
 
-    public List<OrderItem> getOrderItemAll() {
-        return orderItemAll;
+    public List<OrderItem> getOrderItems() {
+        return orderItems;
     }
 
-    public void setOrderItemAll(List<OrderItem> orderItemAll) {
-        this.orderItemAll = orderItemAll;
+    public void setOrderItems(List<OrderItem> orderItems) {
+        this.orderItems = orderItems;
     }
 
     public String getNote() {

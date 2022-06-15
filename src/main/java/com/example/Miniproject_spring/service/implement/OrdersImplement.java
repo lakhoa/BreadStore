@@ -3,27 +3,23 @@ package com.example.Miniproject_spring.service.implement;
 
 
 import com.example.Miniproject_spring.entity.Orders;
-import com.example.Miniproject_spring.entity.Product;
 import com.example.Miniproject_spring.models.OrderItem;
 import com.example.Miniproject_spring.models.RequestOrderForm;
 import com.example.Miniproject_spring.models.ResponseForm;
 import com.example.Miniproject_spring.repository.OrdersRepository;
 import com.example.Miniproject_spring.service.OrdersService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 @Service
 public class OrdersImplement implements OrdersService {
-
-    private OrdersRepository ordersRepository;
+    @Autowired
+    OrdersRepository ordersRepository;
 
     public OrdersImplement(OrdersRepository ordersRepository) {
         this.ordersRepository = ordersRepository;
@@ -36,7 +32,7 @@ public class OrdersImplement implements OrdersService {
 
     @Override
     public ResponseEntity<ResponseForm<Orders>> order(RequestOrderForm request) {
-        List<OrderItem> listOrderItem= request.getOrderItemAll();
+        List<OrderItem> listOrderItem= request.getOrderItems();
         // ArrayList<Product> listProduct = new ArrayList<Product>();
         // ArrayList<Long> listQuantity = new ArrayList<Long>();
         double totalPrice = 0.0;
