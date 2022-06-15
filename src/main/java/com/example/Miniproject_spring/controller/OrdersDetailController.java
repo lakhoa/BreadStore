@@ -22,7 +22,9 @@ public class OrdersDetailController {
     }
 
     @PostMapping("/test")
-    public Orders_detail createOrders(@RequestBody Orders_detail orders_detail)
+    public void createOrders(@RequestBody OrdersDetailDto ordersDetailDto)
     {
-        return ordersDetailService.createOrder(orders_detail);
+        
+        ordersDetailService.createOrder(ordersDetailDto);
+    }
 }
