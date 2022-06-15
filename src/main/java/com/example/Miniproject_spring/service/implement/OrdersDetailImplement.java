@@ -7,12 +7,14 @@ import com.example.Miniproject_spring.repository.OrdersRepository;
 import com.example.Miniproject_spring.service.DTO.OrdersDetailDto;
 import com.example.Miniproject_spring.service.OrdersDetailService;
 import com.example.Miniproject_spring.service.ProductService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 
 @Service
+@Slf4j
 public class OrdersDetailImplement implements OrdersDetailService {
     private OrderDetailsRepository orderDetailsRepository;
     private OrdersRepository ordersRepository;
@@ -41,6 +43,8 @@ public class OrdersDetailImplement implements OrdersDetailService {
         orders.setCreatedDate(now);
 
         ordersRepository.save(orders);
+        log.info("save order");
         orderDetailsRepository.save(orders_detail1);
+        log.info("save orderDetail");
     }
 }
