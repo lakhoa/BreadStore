@@ -6,22 +6,12 @@ import com.example.Miniproject_spring.entity.Product;
 import javax.validation.constraints.NotNull;
 
 public class OrdersDetailDto {
-    private Long id;
     @NotNull
     private Integer quantity;
     private Long productId;
-    private Long ordersId;
 
     public OrdersDetailDto()
     {
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public Integer getQuantity() {
@@ -40,18 +30,8 @@ public class OrdersDetailDto {
         this.productId = productId;
     }
 
-    public Long getOrdersId() {
-        return ordersId;
-    }
-
-    public void setOrdersId(Long ordersId) {
-        this.ordersId = ordersId;
-    }
-
-    public OrdersDetailDto(Long id, Integer quantity, Long productId, Orders orders) {
-        this.id = id;
+    public OrdersDetailDto( Integer quantity, Long productId) {
         this.quantity = quantity;
         this.productId = productId;
-        this.ordersId = orders.getId();
     }
 }
