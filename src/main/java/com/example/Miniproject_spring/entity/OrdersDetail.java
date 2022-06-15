@@ -1,11 +1,10 @@
 package com.example.Miniproject_spring.entity;
 
 import javax.persistence.*;
-import java.util.Date;
 
 @Entity
 @Table(name = "Orders_detail")
-public class Orders_detail {
+public class OrdersDetail {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -23,10 +22,10 @@ public class Orders_detail {
     @JoinColumn(name = "productId")
     Product product;
 
-    public Orders_detail() {
+    public OrdersDetail() {
     }
 
-    public Orders_detail(Long id,Orders orders,Product product) {
+    public OrdersDetail(Long id, Orders orders, Product product) {
         this.id = id;
         this.orders = orders;
         this.product = product;

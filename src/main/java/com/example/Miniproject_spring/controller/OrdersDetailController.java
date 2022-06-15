@@ -1,9 +1,8 @@
 package com.example.Miniproject_spring.controller;
 
-import com.example.Miniproject_spring.entity.Orders_detail;
+import com.example.Miniproject_spring.service.DTO.OrdersDetailDto;
 import com.example.Miniproject_spring.service.OrdersDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,8 +20,9 @@ public class OrdersDetailController {
     }
 
     @PostMapping("/test")
-    public Orders_detail createOrders(@RequestBody Orders_detail orders_detail)
+    public void createOrders(@RequestBody OrdersDetailDto ordersDetailDto)
     {
-        return ordersDetailService.createOrder(orders_detail);
+        
+        ordersDetailService.createOrder(ordersDetailDto);
     }
 }

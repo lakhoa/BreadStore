@@ -8,4 +8,7 @@ public interface ProductService {
     Product create(Product product);
 
     List<Product> get_all();
+
+    Product findById(Long productId);
+
 }
