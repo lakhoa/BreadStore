@@ -13,6 +13,6 @@ public class ExceptionControllerAdvice {
     @ExceptionHandler(value = CustomException.class)
     public final ResponseEntity<String> handleCustomException(CustomException exception){
         log.error("error");
-        return new ResponseEntity<>(exception.getMessage(), HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>("exception.getMessage()", HttpStatus.BAD_REQUEST);
     }
 }
