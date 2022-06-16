@@ -10,10 +10,6 @@ public class OrdersDetail {
     private Long id;
 
 
-    @Column(name = "quantity")
-    private int quantity;
-
-
     @ManyToOne
     @JoinColumn(name = "Orders_Id")
     Orders orders;
@@ -22,13 +18,17 @@ public class OrdersDetail {
     @JoinColumn(name = "productId")
     Product product;
 
+    @Column(name = "quantity")
+    private int quantity;
+
     public OrdersDetail() {
     }
 
-    public OrdersDetail(Long id, Orders orders, Product product) {
+    public OrdersDetail(Long id, Orders orders, Product product, int quantity) {
         this.id = id;
         this.orders = orders;
         this.product = product;
+        this.quantity = quantity;
     }
 
     public Long getId() {

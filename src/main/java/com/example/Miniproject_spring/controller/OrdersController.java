@@ -2,25 +2,33 @@ package com.example.Miniproject_spring.controller;
 
 
 import com.example.Miniproject_spring.entity.Orders;
+import com.example.Miniproject_spring.models.ResponseForm;
 import com.example.Miniproject_spring.repository.OrdersRepository;
+import com.example.Miniproject_spring.service.DTO.OrdersDetailDto;
+import com.example.Miniproject_spring.service.DTO.RequestDto;
 import com.example.Miniproject_spring.service.OrdersService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 
 @RestController
 public class OrdersController {
-
-    private OrdersService ordersService;
+    @Autowired
+    OrdersService ordersService;
 
     public OrdersController(OrdersService ordersService) {
         this.ordersService = ordersService;
     }
 
-    @PostMapping("/testorders")
-    public Orders create(@RequestBody Orders orders)
-    {
-        return ordersService.createOrder(orders);
+    @PostMapping("/order")
+    public ResponseEntity<ResponseForm<Orders>> create(@RequestBody List<RequestDto<List<OrdersDetailDto>>> orders) {
+        ResponseForm<Orders>  rs =  ordersService.createOrder(orders);
+        return new ResponseEntity<>(rs, HttpStatus.OK);
     }
 }
