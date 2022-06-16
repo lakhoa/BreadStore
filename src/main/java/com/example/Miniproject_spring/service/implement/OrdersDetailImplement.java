@@ -26,6 +26,7 @@ public class OrdersDetailImplement implements OrdersDetailService {
     @Autowired
     OrdersService ordersService;
 
+
     public OrdersDetailImplement(OrderDetailsRepository orderDetailsRepository, OrdersRepository ordersRepository) {
         this.orderDetailsRepository = orderDetailsRepository;
         this.ordersRepository = ordersRepository;
