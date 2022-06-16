@@ -2,6 +2,7 @@ package com.example.Miniproject_spring.service.implement;
 import com.example.Miniproject_spring.entity.Orders;
 import com.example.Miniproject_spring.entity.OrdersDetail;
 import com.example.Miniproject_spring.entity.Product;
+import com.example.Miniproject_spring.service.DTO.OrdersDto;
 import com.example.Miniproject_spring.service.OrdersService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -136,8 +137,7 @@ public class OrdersImplement implements OrdersService {
         List ordersDetailList_get = new ArrayList<>();
         double total_all_price = 0;
         int quan = 0;
-        for (Orders orders1: ordersList)
-        {
+        for (Orders orders1 : ordersList) {
             OrdersDto ordersDto = new OrdersDto();
             total_all_price += orders1.getTotal_price();
             ordersDtos.add(ordersDto);
@@ -148,17 +148,17 @@ public class OrdersImplement implements OrdersService {
 
             List ordersDetailList_get_in = new ArrayList<>();
             quan += ordersDetail.getQuantity();
-                ordersDetailList_get_in.add("name:  " + ordersDetail.getProduct().getName());
+            ordersDetailList_get_in.add("name:  " + ordersDetail.getProduct().getName());
 
-                ordersDetailList_get_in.add("quantity:  " + ordersDetail.getQuantity());
+            ordersDetailList_get_in.add("quantity:  " + ordersDetail.getQuantity());
 
-                ordersDetailList_get_in.add("price:  " + ordersDetail.getProduct().getPrice());
+            ordersDetailList_get_in.add("price:  " + ordersDetail.getProduct().getPrice());
 
-                ordersDetailList_get_in.add("price total:  " + ordersDetail.getOrders().getTotal_price());
+            ordersDetailList_get_in.add("price total:  " + ordersDetail.getOrders().getTotal_price());
 
-                ordersDetailList_get_in.add("date:  " + ordersDetail.getOrders().getCreatedDate());
+            ordersDetailList_get_in.add("date:  " + ordersDetail.getOrders().getCreatedDate());
 
-                ordersDetailList_get.add(ordersDetailList_get_in);
+            ordersDetailList_get.add(ordersDetailList_get_in);
 
         }
 
@@ -167,8 +167,8 @@ public class OrdersImplement implements OrdersService {
         ordersDto.setQuantity(quan);
         ordersDto.setProduct(ordersDetailList_get);
         return ordersDto;
-        
-    public void checkValidQuantity(List<RequestDto<List<OrdersDetailDto>>> ordersRequest) {
 
+    }
+    public void checkValidQuantity(List<RequestDto<List<OrdersDetailDto>>> ordersRequest) {
     }
 }
