@@ -114,4 +114,9 @@ public class OrdersImplement implements OrdersService {
 
         return new ResponseForm<Orders>(responseData, true, "The order is added");
     }
+
+    @Override
+    public void checkValidQuantity(List<RequestDto<List<OrdersDetailDto>>> ordersRequest) {
+
+    }
 }

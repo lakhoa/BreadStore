@@ -9,7 +9,7 @@ import org.springframework.http.ResponseEntity;
 import java.util.List;
 
 public interface OrdersService {
-    ResponseForm<Orders> createOrder(List<RequestDto<List<OrdersDetailDto>>> orders);
-    void checkValidQuantity()
+    ResponseForm<Orders> createOrder(List<RequestDto<List<OrdersDetailDto>>> ordersRequest);
+    void checkValidQuantity(List<RequestDto<List<OrdersDetailDto>>> ordersRequest);
 
 }
