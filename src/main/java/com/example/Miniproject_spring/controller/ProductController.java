@@ -11,6 +11,7 @@ import java.util.List;
 
 @RestController
 public class ProductController {
+    /*
     private ProductService productService;
 
     public ProductController(ProductService productService) {
@@ -28,4 +29,6 @@ public class ProductController {
     {
         return productService.get_all();
     }
+
+     */
 }

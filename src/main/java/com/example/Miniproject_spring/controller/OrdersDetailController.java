@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/")
 public class OrdersDetailController {
+    /*
     OrdersDetailService ordersDetailService;
 
     @Autowired
@@ -26,4 +27,6 @@ public class OrdersDetailController {
         
         ordersDetailService.createOrder(ordersDetailDto);
     }
+
+     */
 }
