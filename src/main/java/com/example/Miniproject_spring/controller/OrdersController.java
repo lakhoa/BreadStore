@@ -12,6 +12,7 @@ import com.example.Miniproject_spring.service.DTO.RequestDto;
 import com.example.Miniproject_spring.service.OrdersService;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -44,7 +45,7 @@ public class OrdersController {
 
 
     @GetMapping("/History")
-    public ResponseEntity<OrdersDto> get(@RequestParam Optional<String> date) {
+    public ResponseEntity<OrdersDto> get() {
             OrdersDto ordersDto = ordersService.list();
             log.info("Call history");
             return new ResponseEntity<>(ordersDto, HttpStatus.OK);

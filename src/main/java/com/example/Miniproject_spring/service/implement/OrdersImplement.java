@@ -137,26 +137,28 @@ public class OrdersImplement implements OrdersService {
         List ordersDetailListGetNew = new ArrayList<>();
         double total_all_price = 0;
         int quan = 0;
-
-        for (OrdersDetail ordersDetail : ordersDetailsList) {
-            // stack in list
-            List ordersDetailList_get_in = new ArrayList<>();
+        for (Orders ordersS: ordersList)
+        {
             OrdersDto ordersDto = new OrdersDto();
-            total_all_price += ordersDetail.getOrders().getTotal_price();
+            total_all_price += ordersS.getTotal_price();
             ordersDtos.add(ordersDto);
-            quan += ordersDetail.getQuantity();
-
-            ordersDetailList_get.add("name:  " + ordersDetail.getProduct().getName());
-            ordersDetailList_get.add("date:  " + ordersDetail.getOrders().getCreatedDate());
-            for (Orders orders : ordersList) {
-                if (ordersDetail.getOrders().getId().equals(orders.getId())) {
-                    ordersDetailList_get_in.add("quantity:  " + ordersDetail.getQuantity());
-
-                    ordersDetailList_get_in.add("price:  " + ordersDetail.getProduct().getPrice());
-                }
-            }
-            ordersDetailList_get.add(ordersDetailList_get_in);
         }
+        for (OrdersDetail ordersDetail : ordersDetailsList) {
+                // stack in list
+                List ordersDetailList_get_in = new ArrayList<>();
+                quan += ordersDetail.getQuantity();
+
+                ordersDetailList_get.add("name:  " + ordersDetail.getProduct().getName());
+                ordersDetailList_get.add("date:  " + ordersDetail.getOrders().getCreatedDate());
+                for (Orders orders : ordersList) {
+                    if (ordersDetail.getOrders().getId().equals(orders.getId())) {
+                        ordersDetailList_get_in.add("quantity:  " + ordersDetail.getQuantity());
+
+                        ordersDetailList_get_in.add("price:  " + ordersDetail.getProduct().getPrice());
+                    }
+                }
+                ordersDetailList_get.add(ordersDetailList_get_in);
+            }
 
         OrdersDto ordersDto = new OrdersDto();
         ordersDto.setTotal(total_all_price);

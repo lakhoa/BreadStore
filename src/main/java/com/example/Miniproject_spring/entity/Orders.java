@@ -26,9 +26,7 @@ public class Orders {
     private Long id;
 
     @Column(name = "created_date",updatable = false)
-    @JsonSerialize(using = LocalDateTimeSerializer.class)
-    @JsonFormat(pattern = "yyyy-MM-dd")
-    @JsonProperty("date")
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDateTime createdDate;
 
     @Column(name = "amounts")
