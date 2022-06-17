@@ -113,9 +113,8 @@ public class OrdersImplement implements OrdersService {
 
     @Override
     public OrdersDto list() {
-        /*
         List<Orders> ordersList = ordersRepository.findAll();
-        List<OrderItems> ordersDetailsList = orderDetailsRepository.findAll();
+        List<OrderItemDetail> ordersDetailsList = orderDetailsRepository.findAll();
         List<OrdersDto> ordersDtos = new ArrayList<>();
 
         // create empty list
@@ -129,20 +128,17 @@ public class OrdersImplement implements OrdersService {
             ordersDtos.add(ordersDto);
         }
 
-        for (OrderItems ordersDetail : ordersDetailsList) {
+        for (OrderItemDetail ordersDetail : ordersDetailsList) {
             // stack in list
 
             List ordersDetailList_get_in = new ArrayList<>();
             quan += ordersDetail.getQuantity();
-            ordersDetailList_get_in.add("name:  " + ordersDetail.getProduct().getName());
+            ordersDetailList_get_in.add("name:  " + ordersDetail.getProducts().getName());
 
             ordersDetailList_get_in.add("quantity:  " + ordersDetail.getQuantity());
 
-            ordersDetailList_get_in.add("price:  " + ordersDetail.getProduct().getPrice());
+            ordersDetailList_get_in.add("price:  " + ordersDetail.getProducts().getPrice());
 
-            ordersDetailList_get_in.add("price total:  " + ordersDetail.getOrders().getTotal_price());
-
-            ordersDetailList_get_in.add("date:  " + ordersDetail.getOrders().getCreatedDate());
 
             ordersDetailList_get.add(ordersDetailList_get_in);
 
@@ -154,9 +150,5 @@ public class OrdersImplement implements OrdersService {
         ordersDto.setProduct(ordersDetailList_get);
         return ordersDto;
 
-    }*/
-
-        // function check invalid
-        return null;
     }
 }

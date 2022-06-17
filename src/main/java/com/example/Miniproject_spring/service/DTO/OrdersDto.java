@@ -9,7 +9,7 @@ public class OrdersDto {
     private Double total;
 
     private Integer quantity;
-/*
+
     private List product;
 
 
@@ -44,6 +44,6 @@ public class OrdersDto {
     }
 
     public OrdersDto(OrderItemDetail ordersDetail) {
-        this.total = ordersDetail.getProduct().getPrice();
-    }*/
+        this.total = ordersDetail.getProducts().getPrice();
+    }
 }
