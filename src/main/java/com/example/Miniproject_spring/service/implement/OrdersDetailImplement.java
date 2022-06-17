@@ -4,7 +4,7 @@ import com.example.Miniproject_spring.entity.OrdersDetail;
 import com.example.Miniproject_spring.entity.Product;
 import com.example.Miniproject_spring.repository.OrderDetailsRepository;
 import com.example.Miniproject_spring.repository.OrdersRepository;
-import com.example.Miniproject_spring.service.DTO.OrdersDetailDto;
+import com.example.Miniproject_spring.service.DTO.OrderToppingDto;
 import com.example.Miniproject_spring.service.OrdersDetailService;
 import com.example.Miniproject_spring.service.OrdersService;
 import com.example.Miniproject_spring.service.ProductService;
@@ -33,8 +33,8 @@ public class OrdersDetailImplement implements OrdersDetailService {
     }
 
     @Override
-    public void createOrder(OrdersDetailDto orders_detail) {
-        Product product = productService.findById(orders_detail.getProductId());
+    public void createOrder(OrderToppingDto orders_detail) {
+        Product product = productService.findById(orders_detail.getToppingId());
         OrdersDetail orders_detail1= new OrdersDetail();
 
         orders_detail1.setProduct(product);

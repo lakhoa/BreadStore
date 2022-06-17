@@ -1,9 +1,8 @@
 package com.example.Miniproject_spring.service;
-import com.example.Miniproject_spring.entity.OrdersDetail;
-import com.example.Miniproject_spring.service.DTO.OrdersDetailDto;
+import com.example.Miniproject_spring.service.DTO.OrderToppingDto;
 
 
 public interface OrdersDetailService {
 
-    void createOrder(OrdersDetailDto ordersDetailDto);
+    void createOrder(OrderToppingDto ordersDetailDto);
 }

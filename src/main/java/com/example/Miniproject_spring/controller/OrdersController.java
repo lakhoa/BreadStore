@@ -2,13 +2,13 @@ package com.example.Miniproject_spring.controller;
 
 
 import com.example.Miniproject_spring.entity.Orders;
+import com.example.Miniproject_spring.exception_handler.CustomException;
 import com.example.Miniproject_spring.models.ResponseForm;
-import com.example.Miniproject_spring.repository.OrdersRepository;
 
 import com.example.Miniproject_spring.service.DTO.OrdersDto;
 import lombok.extern.slf4j.Slf4j;
-import com.example.Miniproject_spring.service.DTO.OrdersDetailDto;
-import com.example.Miniproject_spring.service.DTO.RequestDto;
+import com.example.Miniproject_spring.service.DTO.OrderToppingDto;
+import com.example.Miniproject_spring.service.DTO.OrderDto;
 import com.example.Miniproject_spring.service.OrdersService;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -19,8 +19,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.Optional;
 
 import java.util.List;
@@ -37,7 +35,7 @@ public class OrdersController {
     }
 
     @PostMapping("/order")
-    public ResponseEntity<ResponseForm<Orders>> create(@RequestBody List<RequestDto<List<OrdersDetailDto>>> orders) {
+    public ResponseEntity<ResponseForm<Orders>> create(@RequestBody List<OrderDto<List<OrderToppingDto>>> orders) throws CustomException {
         ResponseForm<Orders>  rs =  ordersService.createOrder(orders);
         return new ResponseEntity<>(rs, HttpStatus.OK);
     }

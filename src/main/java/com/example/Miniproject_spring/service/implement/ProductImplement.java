@@ -1,19 +1,22 @@
 package com.example.Miniproject_spring.service.implement;
 
 import com.example.Miniproject_spring.entity.Product;
-import com.example.Miniproject_spring.exception_handler.CustomException;
+import com.example.Miniproject_spring.models.ProductResponse;
+import com.example.Miniproject_spring.models.ResponseForm;
 import com.example.Miniproject_spring.repository.ProductRepository;
 import com.example.Miniproject_spring.service.ProductService;
+import com.example.Miniproject_spring.utils.Constant;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 
 @Service
 public class ProductImplement implements ProductService {
-    private ProductRepository productRepository;
+    @Autowired
+    ProductRepository productRepository;
 
     public ProductImplement(ProductRepository productRepository) {
         this.productRepository = productRepository;
@@ -39,4 +42,10 @@ public class ProductImplement implements ProductService {
         }
         return optionalProduct.get();
     }
+
+    @Override
+    public List<Product> findAll() {
+        return productRepository.findAll();
+    }
+
 }

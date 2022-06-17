@@ -1,17 +1,13 @@
 package com.example.Miniproject_spring.controller;
 
 
-import com.example.Miniproject_spring.service.DTO.OrdersDetailDto;
-import com.example.Miniproject_spring.service.OrdersDetailService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/")
 public class OrdersDetailController {
+    /*
     OrdersDetailService ordersDetailService;
 
     @Autowired
@@ -25,5 +21,5 @@ public class OrdersDetailController {
     {
         
         ordersDetailService.createOrder(ordersDetailDto);
-    }
+    }*/
 }
