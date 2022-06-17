@@ -41,7 +41,6 @@ public class OrdersImplement implements OrdersService {
     @Autowired
     OrderDetailsRepository orderDetailsRepository;
 
-
     public OrdersImplement(OrdersRepository ordersRepository, OrderDetailsRepository orderDetailsRepository) {
         this.ordersRepository = ordersRepository;
         this.orderDetailsRepository = orderDetailsRepository;
@@ -135,31 +134,28 @@ public class OrdersImplement implements OrdersService {
         // create empty list
 
         List ordersDetailList_get = new ArrayList<>();
+        List ordersDetailListGetNew = new ArrayList<>();
         double total_all_price = 0;
         int quan = 0;
-        for (Orders orders1 : ordersList) {
-            OrdersDto ordersDto = new OrdersDto();
-            total_all_price += orders1.getTotal_price();
-            ordersDtos.add(ordersDto);
-        }
 
         for (OrdersDetail ordersDetail : ordersDetailsList) {
             // stack in list
-
             List ordersDetailList_get_in = new ArrayList<>();
+            OrdersDto ordersDto = new OrdersDto();
+            total_all_price += ordersDetail.getOrders().getTotal_price();
+            ordersDtos.add(ordersDto);
             quan += ordersDetail.getQuantity();
-            ordersDetailList_get_in.add("name:  " + ordersDetail.getProduct().getName());
 
-            ordersDetailList_get_in.add("quantity:  " + ordersDetail.getQuantity());
+            ordersDetailList_get.add("name:  " + ordersDetail.getProduct().getName());
+            ordersDetailList_get.add("date:  " + ordersDetail.getOrders().getCreatedDate());
+            for (Orders orders : ordersList) {
+                if (ordersDetail.getOrders().getId().equals(orders.getId())) {
+                    ordersDetailList_get_in.add("quantity:  " + ordersDetail.getQuantity());
 
-            ordersDetailList_get_in.add("price:  " + ordersDetail.getProduct().getPrice());
-
-            ordersDetailList_get_in.add("price total:  " + ordersDetail.getOrders().getTotal_price());
-
-            ordersDetailList_get_in.add("date:  " + ordersDetail.getOrders().getCreatedDate());
-
+                    ordersDetailList_get_in.add("price:  " + ordersDetail.getProduct().getPrice());
+                }
+            }
             ordersDetailList_get.add(ordersDetailList_get_in);
-
         }
 
         OrdersDto ordersDto = new OrdersDto();
@@ -171,4 +167,6 @@ public class OrdersImplement implements OrdersService {
     }
     public void checkValidQuantity(List<RequestDto<List<OrdersDetailDto>>> ordersRequest) {
     }
+
+
 }

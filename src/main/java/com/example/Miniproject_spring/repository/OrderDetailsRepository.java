@@ -9,6 +9,8 @@ import org.springframework.data.rest.core.annotation.Description;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.data.rest.core.annotation.RestResource;
 
+import java.util.List;
+
 @RepositoryRestResource(collectionResourceRel = "orders_detail")
 public interface OrderDetailsRepository extends JpaRepository<OrdersDetail,Long> {
 
@@ -16,4 +18,6 @@ public interface OrderDetailsRepository extends JpaRepository<OrdersDetail,Long>
     public Orders findFirstById(@Param("id") Long id);
     @RestResource(rel = "create", description = @Description("Create"))
     public Orders save(@Param("order") Orders orders);
+
+    List<OrdersDetail> findByorders(Long id);
 }

@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.Optional;
 
 @Service
 @Slf4j
@@ -53,5 +54,15 @@ public class OrdersDetailImplement implements OrdersDetailService {
         orders_detail1.setOrders(orders);
         orderDetailsRepository.save(orders_detail1);
         log.info("save orderDetail");
+    }
+
+    @Override
+    public OrdersDetail findByorders(Long id) {
+        Optional<OrdersDetail> optionalProduct = orderDetailsRepository.findById(id);
+        if (optionalProduct.isEmpty())
+        {
+            return null;
+        }
+        return optionalProduct.get();
     }
 }
