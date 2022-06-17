@@ -1,7 +1,4 @@
 package com.example.Miniproject_spring.service.implement;
-import com.example.Miniproject_spring.entity.Orders;
-import com.example.Miniproject_spring.entity.OrdersDetail;
-import com.example.Miniproject_spring.entity.Product;
 import com.example.Miniproject_spring.repository.OrderDetailsRepository;
 import com.example.Miniproject_spring.repository.OrdersRepository;
 import com.example.Miniproject_spring.service.DTO.OrderToppingDto;
@@ -11,8 +8,6 @@ import com.example.Miniproject_spring.service.ProductService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.time.LocalDateTime;
 
 @Service
 @Slf4j
@@ -34,24 +29,5 @@ public class OrdersDetailImplement implements OrdersDetailService {
 
     @Override
     public void createOrder(OrderToppingDto orders_detail) {
-        Product product = productService.findById(orders_detail.getToppingId());
-        OrdersDetail orders_detail1= new OrdersDetail();
-
-        orders_detail1.setProduct(product);
-        orders_detail1.setQuantity(orders_detail.getQuantity());
-
-        double price = (orders_detail1.getQuantity() * product.getPrice());
-        Orders orders = new Orders();
-        orders.setTotal_price(price);
-
-        LocalDateTime now = LocalDateTime.now();
-        orders.setCreatedDate(now);
-
-        ordersRepository.save(orders);
-        log.info("save order");
-
-        orders_detail1.setOrders(orders);
-        orderDetailsRepository.save(orders_detail1);
-        log.info("save orderDetail");
     }
 }

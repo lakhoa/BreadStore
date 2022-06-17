@@ -1,8 +1,6 @@
 package com.example.Miniproject_spring.service.DTO;
 
-import com.example.Miniproject_spring.entity.Orders;
-import com.example.Miniproject_spring.entity.OrdersDetail;
-import com.example.Miniproject_spring.entity.Product;
+import com.example.Miniproject_spring.entity.OrderItemDetail;
 
 import java.util.List;
 
@@ -11,7 +9,7 @@ public class OrdersDto {
     private Double total;
 
     private Integer quantity;
-
+/*
     private List product;
 
 
@@ -45,7 +43,7 @@ public class OrdersDto {
         this.product = product;
     }
 
-    public OrdersDto(OrdersDetail ordersDetail) {
+    public OrdersDto(OrderItemDetail ordersDetail) {
         this.total = ordersDetail.getProduct().getPrice();
-    }
+    }*/
 }

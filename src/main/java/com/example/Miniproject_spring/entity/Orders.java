@@ -2,18 +2,13 @@ package com.example.Miniproject_spring.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
-import org.hibernate.annotations.CreationTimestamp;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Date;
-import java.util.UUID;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Entity
@@ -67,4 +62,19 @@ public class Orders {
     public void setTotal_price(double total_price) {
         this.total_price = total_price;
     }
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "OrderItemDetail",
+            joinColumns = { @JoinColumn(name = "orderId") },
+            inverseJoinColumns = { @JoinColumn(name = "orderItemId") })
+    private List<OrderItemDetail> orderItems = new ArrayList<>();
+
+    public List<OrderItemDetail> getOrderItems() {
+        return orderItems;
+    }
+
+    public void setOrderItems(List<OrderItemDetail> orderItems) {
+        this.orderItems = orderItems;
+    }
 }
+

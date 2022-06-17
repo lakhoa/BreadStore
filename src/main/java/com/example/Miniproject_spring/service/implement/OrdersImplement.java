@@ -1,13 +1,12 @@
 package com.example.Miniproject_spring.service.implement;
+import com.example.Miniproject_spring.entity.OrderItemDetail;
 import com.example.Miniproject_spring.entity.Orders;
-import com.example.Miniproject_spring.entity.OrdersDetail;
 import com.example.Miniproject_spring.entity.Product;
 import com.example.Miniproject_spring.entity.Topping;
 import com.example.Miniproject_spring.exception_handler.CustomException;
 import com.example.Miniproject_spring.repository.ToppingRepository;
 import com.example.Miniproject_spring.service.DTO.OrdersDto;
 import com.example.Miniproject_spring.service.OrdersService;
-import com.example.Miniproject_spring.utils.Constant;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +16,6 @@ import com.example.Miniproject_spring.models.ResponseForm;
 import com.example.Miniproject_spring.repository.OrderDetailsRepository;
 import com.example.Miniproject_spring.repository.OrdersRepository;
 import com.example.Miniproject_spring.repository.ProductRepository;
-import com.example.Miniproject_spring.service.DTO.ItemDto;
 import com.example.Miniproject_spring.service.DTO.OrderToppingDto;
 import com.example.Miniproject_spring.service.DTO.OrderDto;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,11 +50,11 @@ public class OrdersImplement implements OrdersService {
     public ResponseForm<Orders> createOrder(List<OrderDto<List<OrderToppingDto>>> allOrders) throws CustomException {
 
         //Check invalid quantity
-        checkValidQuantity(allOrders);
+        //checkValidQuantity(allOrders);
 
         double totalPriceAll = 0.0;
         LocalDateTime now = LocalDateTime.now();
-        List<OrdersDetail> listOrderDetail = new ArrayList<>();
+        List<OrderItemDetail> listOrderDetail = new ArrayList<>();
         //List<ItemDto> listItem =new ArrayList<>();
 
 
@@ -71,7 +69,6 @@ public class OrdersImplement implements OrdersService {
 
                 //calculate total price
                 totalItemsPrice = product.getPrice() * orderItem.getQuantity();
-
 
 
             } else {
@@ -93,15 +90,15 @@ public class OrdersImplement implements OrdersService {
 
                 // calculate total price of a item
                 double toppingsPrice = 0.0;
-                for (Topping S : toppingList ) {
+                for (Topping S : toppingList) {
                     toppingsPrice += S.getPrice() * map.get(S.getId());
-                    }
-                double itemPrice = toppingsPrice + product.getPrice();
-                totalItemsPrice = itemPrice*orderItem.getQuantity();
                 }
+                double itemPrice = toppingsPrice + product.getPrice();
+                totalItemsPrice = itemPrice * orderItem.getQuantity();
+            }
 
             totalPriceAll += totalItemsPrice;
-            }
+        }
 
         Orders responseData = new Orders(null, now, totalPriceAll);
 
@@ -116,8 +113,9 @@ public class OrdersImplement implements OrdersService {
 
     @Override
     public OrdersDto list() {
+        /*
         List<Orders> ordersList = ordersRepository.findAll();
-        List<OrdersDetail> ordersDetailsList = orderDetailsRepository.findAll();
+        List<OrderItems> ordersDetailsList = orderDetailsRepository.findAll();
         List<OrdersDto> ordersDtos = new ArrayList<>();
 
         // create empty list
@@ -131,7 +129,7 @@ public class OrdersImplement implements OrdersService {
             ordersDtos.add(ordersDto);
         }
 
-        for (OrdersDetail ordersDetail : ordersDetailsList) {
+        for (OrderItems ordersDetail : ordersDetailsList) {
             // stack in list
 
             List ordersDetailList_get_in = new ArrayList<>();
@@ -156,19 +154,9 @@ public class OrdersImplement implements OrdersService {
         ordersDto.setProduct(ordersDetailList_get);
         return ordersDto;
 
-    }
+    }*/
 
-    // function check invalid
-    public void checkValidQuantity(List<OrderDto<List<OrderToppingDto>>> allOrders) throws CustomException {
-        for (OrderDto<List<OrderToppingDto>> orderItem : allOrders){
-            int MAX_NUMBER_ITEM = Constant.MAX_NUMBER_PRODUCT;
-            Integer amountProduct = 0;
-            for (OrderToppingDto S : orderItem.getToppings()){
-                amountProduct += S.getQuantity();
-            }
-            if (amountProduct > MAX_NUMBER_ITEM){
-                throw new CustomException("Amount: "+amountProduct+ " invalid", allOrders);
-            }
-        }
+        // function check invalid
+        return null;
     }
 }

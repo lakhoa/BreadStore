@@ -12,7 +12,6 @@ import java.util.List;
 
 public interface OrdersService {
     ResponseForm<Orders> createOrder(List<OrderDto<List<OrderToppingDto>>> ordersRequest) throws CustomException;
-    void checkValidQuantity(List<OrderDto<List<OrderToppingDto>>> ordersRequest) throws CustomException;
 
     OrdersDto list();
 
